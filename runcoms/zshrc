@@ -5,9 +5,54 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+export SHELL=/u/anantha/workspace3/share/programs/zsh/bin/zsh
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 # Customize to your needs...
+bindkey '^ ' autosuggest-accept
+bindkey 'jk' vi-cmd-mode
+
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# bind P and N for EMACS mode
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+module add neovim
+module add tmux
+module add pdftk
+module add texlive
+
+export MANPAGER="less"
+export EDITOR="vim"
+export HOSTALIASES="/homes/chiraag/.host_aliases"
+
+export C_INCLUDE_PATH="/homes/chiraag/local/include"
+export CPLUS_INCLUDE_PATH="/homes/chiraag/local/include"
+export LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/cuda/lib64:/homes/chiraag/local/lib"
+
+export TEXINPUTS=".:/homes/chiraag/local/share/texmf/tex//:"
+export CCACHE_DIR="/dev/shm/.chiraag_ccache/"
+
+alias vim="nvim"
+# # alias use_xilinx_13.3 "source ~/use_xilinx_13.3"
+# # alias alpine  'alpine -p "{imap.exchange.mit.edu/ssl/novalidate-cert/user=chiraag}remote_pinerc"'
+alias macvnc="vncserver :1 -depth 24 -geometry 1920x1080 -localhost -NeverShared=true -DisconnectClients=false"
+# alias tmux="env TERM=xterm-256color tmux"
+alias foxit="local/opt/foxitsoftware/foxitreader/FoxitReader.sh"
+alias bsvhelp="foxit $BLUESPECDIR/../doc/BSV/bsv-reference-guide.pdf"
+alias bsvguide="foxit $BLUESPECDIR/../doc/BSV/bsv-user-guide.pdf"
+alias gitdiffcolor="git diff --color=always | less -R"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

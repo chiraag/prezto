@@ -9,3 +9,14 @@
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+#
+# Setup the module files correctly
+#
+
+source $MODULESHOME/init/zsh
+module use $HOME/programs/modulefiles/
+export progs=/u/anantha/workspace3/share/programs
+module add local
+module add python
+module add bluespec
