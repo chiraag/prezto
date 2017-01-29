@@ -15,8 +15,23 @@ fi
 #
 
 source $MODULESHOME/init/zsh
-module use $HOME/programs/modulefiles/
+# Setup anantha-group programs
 export progs=/u/anantha/workspace3/share/programs
-module add local
 module add python
 module add bluespec
+
+# Setup user programs
+module use $HOME/programs/modulefiles/
+module add local
+
+# Setup MTL programs
+local m
+local ms=()
+for m in /u/cad/modulefiles/*
+do
+  if [[ -d $m && -r $m ]]
+  then
+    ms+="$m"
+  fi
+done
+module use $ms
