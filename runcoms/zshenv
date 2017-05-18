@@ -17,6 +17,7 @@ fi
 source $MODULESHOME/init/zsh
 # Setup anantha-group programs
 export progs=/u/anantha/workspace3/share/programs
+module add rh6-libs
 module add python
 module add bluespec
 

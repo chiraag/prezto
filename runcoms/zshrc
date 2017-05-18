@@ -34,6 +34,8 @@ module add tmux
 module add pdftk
 module add texlive
 
+export BSV_STDPATH="/homes/chiraag/repos/bsv-standard"
+
 export MANPAGER="less"
 export EDITOR="vim"
 export HOSTALIASES="/homes/chiraag/.host_aliases"
@@ -45,14 +47,16 @@ export LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/cuda/lib64:/homes/chiraag/lo
 export TEXINPUTS=".:/homes/chiraag/local/share/texmf/tex//:"
 export CCACHE_DIR="/dev/shm/.chiraag_ccache/"
 
+export CDS_LOAD_ENV addCWD
+
 alias vim="nvim"
 # # alias use_xilinx_13.3 "source ~/use_xilinx_13.3"
 # # alias alpine  'alpine -p "{imap.exchange.mit.edu/ssl/novalidate-cert/user=chiraag}remote_pinerc"'
 alias macvnc="vncserver :1 -depth 24 -geometry 1920x1080 -localhost -NeverShared=true -DisconnectClients=false"
 # alias tmux="env TERM=xterm-256color tmux"
-alias foxit="local/opt/foxitsoftware/foxitreader/FoxitReader.sh"
-alias bsvhelp="foxit $BLUESPECDIR/../doc/BSV/bsv-reference-guide.pdf"
-alias bsvguide="foxit $BLUESPECDIR/../doc/BSV/bsv-user-guide.pdf"
+alias foxit="~/local/opt/foxitsoftware/foxitreader/FoxitReader.sh"
+alias bsvhelp="foxit $BLUESPECDIR/../doc/BSV/bsv-reference-guide.pdf 2> /dev/null &"
+alias bsvguide="foxit $BLUESPECDIR/../doc/BSV/bsv-user-guide.pdf 2> /dev/null &"
 alias gitdiffcolor="git diff --color=always | less -R"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
